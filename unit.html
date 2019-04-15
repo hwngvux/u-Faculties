@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Đơn vị</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            a { 
+                text-decoration: none;
+            }
+            #content {
+                padding: 0 30px;
+            }
+            #create {
+                background-color: cyan;
+                position: fixed;
+                border: 1px solid gray;
+                margin-top: 30px;
+                padding: 5px;
+                cursor: pointer;
+                right: 80px;
+            }
+            #unit-option {
+                position: fixed;
+                right: 80px;
+            }
+            label {
+                font-weight: bold; 
+            }
+            #tb {
+                border-right: none;
+                border-left: none;
+            }
+            th {
+                border-bottom: 1px solid grey;
+                text-align: left;
+                padding-top: 7px; 
+                padding-bottom: 7px;
+            }
+            thead tr th {
+                border-bottom: 2px solid grey;
+            }
+            thead tr th {
+                font-weight: bold;
+            }
+            tbody tr th {
+                font-weight: normal;
+            }
+            .action-option {
+                background-color: cyan;
+                border: 1px solid gray;
+                padding: 2px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="surface">
+            <div id="content">
+                <div>
+                    <span style="display: inline-block;">
+                        <h1>Đơn vị</h1>
+                    </span>
+                    <a href="" id="create">Thêm mới</a>
+                </div>
+                <br>
+                <div id="unit-option">
+                    <label for="unit-list" class="label">Loại Đơn Vị </label>
+                    <select value="unit-list">
+                        <option>Bộ môn</option>
+                        <option>Phòng thí nghiệm</option>
+                    </select>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <table id="tb">
+                        <col width="50">
+                        <col width="350">
+                        <col width="300">
+                        <col width="150">
+                        <col width="150">
+                        <col width="230">
+                        <col width="70">
+                        <thead>
+                            <tr>
+                                <th class="order">TT</th>
+                                <th class="unit-name">Tên đơn vị</th>
+                                <th class="unit-type">Loại đơn vị</th>
+                                <th class="address">Địa chỉ</th>
+                                <th class="phone">Điện thoại</th>
+                                <th class="web-addr">Website</th>
+                                <th class="action">Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>   
+                                <th class="order">1</th>
+                                <th class="unit-name">Bộ môn Các hệ thống Thông tin</th>
+                                <th class="unit-type">Bộ môn</th>
+                                <th class="address"></th>
+                                <th class="phone"></th>
+                                <th class="web-addr"></th>
+                                <th class="action">
+                                    <div>
+                                        <a href="" class="action-option" id="edit">Sửa</a>
+                                        <a href="" class="action-option" id="del">Xóa</a>
+                                    </div>
+                                </th>
+                            </tr>
+                            <tr>   
+                                    <th class="order">2</th>
+                                    <th class="unit-name">Bộ môn Mạng máy tính</th>
+                                    <th class="unit-type">Bộ môn</th>
+                                    <th class="address">404E3</th>
+                                    <th class="phone"></th>
+                                    <th class="web-addr"></th>
+                                    <th class="action">
+                                        <div>
+                                            <a href="" class="action-option" id="edit">Sửa</a>
+                                            <a href="" class="action-option" id="del">Xóa</a>
+                                        </div>
+                                    </th>
+                                </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

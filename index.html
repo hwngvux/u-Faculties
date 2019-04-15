@@ -2,9 +2,153 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Hello World</title>
+        <title>Trang thông tin giảng viên</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            a {
+                text-decoration: none;
+            }
+            #header {
+                width: 100%;
+                position: relative;
+                background-color:rgb(71, 141, 50);
+                height: 60px;
+            }
+            #header-logo {
+                background-image: url("public\images\download.jpg");
+                width: 200px;
+                height : 60px;
+                background-repeat: no-repeat;
+                background-size: 30px 40px;
+                background-position: center center;
+            }
+            #header-user {
+                position: absolute;
+                right: 0px;
+                top: 1%;
+            }
+            .input {
+                border-radius: 3px;
+                border: none;
+            }
+            .input-topbar {
+                display: inline-block; 
+                margin-right: 10px;
+                top: 2%;  
+            }
+            #username-login {
+                position: relative;
+                bottom: 20px;
+            }
+            #forgot-password {
+                display: block;
+            }
+            #login-button{
+                position: relative;
+                bottom: 20px;
+            }
+            #main-content {
+                margin: 0;
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+            #slogan {
+                position: relative;
+                left: 36%;
+            }
+            .search-btn {
+                cursor: pointer;
+                position: absolute;
+                right: 0;
+                top: 0;
+                z-index: 2;
+            }
+            #search-bar {
+                font-size: 17px;
+                width: 50%;
+                height: 30px;
+                background-color: rgb(158, 219, 97);
+                position: relative;
+                left: 25%;
+                padding-left: 5px;
+                z-index: 1;
+            }
+            #main-search-bar-btn {
+                position: relative;
+            }
+            #main-search-bar-btn img {
+                position: absolute;
+                background-image: url("public\images\search.png");
+            }
+
+            .option {
+                border: 1px solid gray;
+                margin-right: 10px;
+                margin-top: 30px;
+                padding: 5px;
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
-        <h1>Hello NodeJS</h1>
+        <div id="surface">
+            <div id="header">
+                <a href="localhost:8000" id="logo-page">
+                    <span id="header-logo"></span>
+                </a>
+                <div>                 
+                    <div style="display: inline-block; width: 600px;"></div>
+                </div>
+                <div id="header-user">
+                    <span class="input-topbar input" id="username-login">
+                        <div class="login-input-lable" style="right: 100px;">Tên đăng nhập</div>
+                        <input type="text">
+                    </span>
+                    <span class="input-topbar">
+                        <div class="login-input-lable input">Mật khẩu</div>
+                        <input type="password">
+                        <a id="forgot-password" href="">Quên mật khẩu?</a>
+                    </span>
+                    <span class="input-topbar input" id="login-button">
+                        <button>Đăng nhập</button>
+                    </span>
+                </div>
+            </div>
+            <div id="content">
+                <div id="main-content">
+                    <div>
+                        <h1 id="slogan">Trang thông tin giảng viên</h1>
+                    </div>
+                    <div>
+                        <input id="search-bar" class="input" type="text" placeholder="Bạn muốn tìm gì?...">
+                        <span class="search-btn">
+                            <a href="" id="main-search-bar-btn" class="search-btn">
+                                <img src="public\images\search.png">
+                            </a>
+                        </span>
+                    </div>
+                    <br>
+                    <br>
+                    <div id="search-type">
+                        <span class="option">
+                            <a href="">Đơn vị</a>
+                        </span>
+                        <span class="option">
+                            <a href="">
+                                Lĩnh vực nghiên cứu
+                            </a>
+                        </span>
+                        <span class="option">
+                            <a href="">
+                                Giảng viên
+                            </a>
+                        </span>
+                    </div>
+                </div>    
+            </div>
+        </div>
     </body>
 </html>
