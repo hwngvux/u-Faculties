@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lĩnh vực nghiên cứu</title>
+        <meta charset="utf-8">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            a {
+                text-decoration: none;
+            }
+            ul, li {
+                list-style: none;
+            }
+            #content {
+                padding: 0 30px;
+            }
+            #field-list {
+                padding: 0 20px;
+                border: 1px solid grey;
+            }
+            #create {
+                background-color: cyan;
+                position: fixed;
+                border: 1px solid gray;
+                padding: 1px;
+                cursor: pointer;
+                margin-left: 20px;
+            }
+            #edit {
+                background-color: cyan;
+                position: fixed;
+                border: 1px solid gray;
+                padding: 1px;
+                cursor: pointer;
+                margin-left: 70px;
+            }
+            #del {
+                background-color: cyan;
+                position: fixed;
+                border: 1px solid gray;
+                padding: 1px;
+                cursor: pointer;
+                margin-left: 107px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="surface">
+            <div id="content">
+                <div>
+                    <h1>Lĩnh vực nghiên cứu</h1>
+                </div>
+                <br>
+                <br>
+                <div id="field-list">
+                    <div style="margin-top: 20px;">
+                        <div id="field-list-name" style="display: inline-block">
+                            <h3 style="margin: 0;">Lĩnh vực</h3>
+                        </div>
+                        <a href="" id="create">Thêm</a>
+                    </div>
+                    <ul class="tree">
+                        <li class="has-children">
+                            <img src="public/images/minus.gif" onclick=""/>
+                            <a href="">ACM Computing Classification System</a>
+                            <ul>
+                                <li class="has-children">
+                                    <img src="public/images/plus.gif"/>
+                                    <a href="">General and refernce</a>
+                                </li>
+                                <li class="has-children">
+                                    <img src="public/images/plus.gif"/>
+                                    <a href="">Hardware</a>
+                                </li>
+                                <li class="has-children">
+                                    <img src="public/images/plus.gif"/>
+                                    <a href="">Computer systems organization</a>
+                                </li>
+                                <li class="has-children">
+                                    <img src="public/images/minus.gif"/>
+                                    <a href="">Networks</a>
+                                    <a href="" id="create">Thêm</a>
+                                    <a href="" id="edit">Sửa</a>
+                                    <a href="" id="del">Xóa</a>
+                                    <ul>
+                                        <li class="has-children">
+                                            <img src="public/images/plus.gif"/>
+                                            <a href="">Network architectures</a>
+                                        </li>
+                                        <li class="has-children">
+                                            <img src="public/images/plus.gif"/>
+                                            <a href="">Network protocols</a>
+                                        </li>
+                                        <li class="has-children">
+                                            <img src="public/images/plus.gif"/>
+                                            <a href="">Network components</a>
+                                        </li>
+                                        <li class="has-children">
+                                            <img src="public/images/plus.gif"/>
+                                            <a href="">Network algorithms</a>
+                                        </li>
+                                        <li class="has-children">
+                                            <img src="public/images/plus.gif"/>
+                                            <a href="">Network performance evaluation</a>
+                                        </li>
+                                        <li class="has-children">
+                                            <img src="public/images/plus.gif"/>
+                                            <a href="">Network properties</a>
+                                        </li>
+                                        <li class="has-children">
+                                            <img src="public/images/plus.gif"/>
+                                            <a href="">Network services</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <img src="public/images/plus.gif"/>
+                                    <a href="">Software and its engineering</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
