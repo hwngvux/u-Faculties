@@ -103,18 +103,20 @@
                     <div style="display: inline-block; width: 600px;"></div>
                 </div>
                 <div id="header-user">
-                    <span class="input-topbar input" id="username-login">
-                        <div class="login-input-lable" style="right: 100px;">Tên đăng nhập</div>
-                        <input type="text">
-                    </span>
-                    <span class="input-topbar">
-                        <div class="login-input-lable input">Mật khẩu</div>
-                        <input type="password">
-                        <a id="forgot-password" href="">Quên mật khẩu?</a>
-                    </span>
-                    <span class="input-topbar input" id="login-button">
-                        <button>Đăng nhập</button>
-                    </span>
+                    <form action="/controller/register-controller" method="post">
+                        <span class="input-topbar input" id="username-login">
+                            <div class="login-input-lable" style="right: 100px;">Email</div>
+                            <input type="text" name="email">
+                        </span>
+                        <span class="input-topbar">
+                            <div class="login-input-lable input">Mật khẩu</div>
+                            <input type="password" name="password">
+                            <a id="forgot-password" href="">Quên mật khẩu?</a>
+                        </span>
+                        <span class="input-topbar input" id="login-button">
+                            <input type="submit" value="Đăng nhập">
+                        </span>
+                    </form>
                 </div>
             </div>
             <div id="content">
