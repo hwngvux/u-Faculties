@@ -1,0 +1,32 @@
+<div id="header">
+    <div class="container clear-fix">
+        <a href="/" id="logo-page">
+            <span id="header-logo">
+                <img id="logo" src="/image/logo.png">
+            </span>
+        </a>
+        <% if (role === "guest") { %>
+        <% } else if (name) { %>
+        <div id="header-user">
+            <table id=login>
+                <tbody>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th style="font-weight: bold; color: #fff;">Xin chào, <a href="/profile"><%= name %></a></th>
+                        <th>
+                            <form action="/logout" method="POST">
+                                <button class="btn btn-success" type="submit">Đăng xuất</button>
+                            </form>
+                        </th>
+                    </tr>
+                    <tr>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <% } else {} %>
+    </div>
+</div>

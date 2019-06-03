@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Trang thông tin giảng viên</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div id="surface">
+            <div id="header">
+                <div class="container clear-fix">
+                    <a href="/" id="logo-page">
+                        <span id="header-logo">
+                            <img id="logo" src="/image/logo.png">
+                        </span>
+                    </a>
+                    <div id="header-user">
+                        <form action="/signin" method="post">
+                            <table id=login>
+                                <tbody>
+                                    <tr>
+                                        <th><label for="username-input">Tên đăng nhập</label></th>
+                                        <th><label for="password-input">Mật khẩu</label></th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <input id="username-input" class="input-box" type="text" name="username" required autocomplete="off">
+                                            
+                                        </th>
+                                        <th>
+                                            <input id="password-input" class="input-box" type="password" name="password" required autocomplete="off">
+                                        </th>
+                                        <th>
+                                            <button type="submit" class="btn btn-success" id="login-btn">Đăng nhập</button>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <%
+                                                var infoHidden = "hidden";
+                                                var msg = "";
+                                                if (typeof message !== 'undefined') {
+                                                    infoHidden = "";
+                                                    msg = message;
+                                                }
+                                            %>
+                
+                                            <span <%=infoHidden%>>
+                                                <img style="width: 20px; height: 20px;" src="/image/triangle.png">
+                                                <%=msg%>
+                                            </span>
+                                            <!-- <div class="custom-control custom-checkbox">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck" name="remember">
+                                                <label class="custom-control-label" for="customCheck">Lưu đăng nhập</label>
+                                            </div> -->
+                                        </th>
+                                        <th>
+                                            <!-- <a id="forgot-password" href="">Quên mật khẩu?</a> -->
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-container">
+                <div class="container clear-fix">
+                    <div id="main-content">
+                        <br>
+                        <div>
+                            <h1 id="slogan">TRANG THÔNG TIN GIẢNG VIÊN</h1>
+                        </div>
+                        <br>
+                        <form action="/search-unit" method="get">
+                            <button type="submit" class="btn btn-warning" style="margin: auto; display: block;">Tìm kiếm</button>
+                        </form>
+                        <br>
+                        <div class="jumbotron">
+                            <p>
+                                <p style="font-weight: 800;">Bản cập nhật ngày 27/05/2019:</p>
+                                    1. Tính năng:<br>
+                                    <br>
+                                        - Thông báo sai mật khẩu/tài khoản chưa tồn tại<br>
+                                        - Logo<br>
+                                    <br>
+                                    2. Giao diện:<br>
+                                        - Hiển ảnh slide ở trang chủ<br>
+                                <p style="font-weight: 800;">To be continued...</p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%include partials/foot.ejs%>
+    </body>
+</html>

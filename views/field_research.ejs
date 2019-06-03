@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lĩnh vực nghiên cứu</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/dist/themes/default/style.min.css" />
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+    </head>
+    <body>
+        <div id="surface">
+            <% include partials/head.ejs %>
+            <div class="container">
+                <br>
+                <div>
+                    <h1>Lĩnh vực nghiên cứu</h1>
+                </div>
+                <br>
+                <br>
+                <div id="field-list">
+                    <div style="margin-top: 20px;">
+                        <div id="field-list-name" style="display: inline-block">
+                            <h3 style="margin: 0;">Lĩnh vực</h3>
+                        </div>
+                        <div style="display: inline-block;">
+                            <button class="btn btn-info" id="create-root">Thêm</button>
+                        </div>
+                        <input type="text" placeholder="Tìm kiếm" id="field-search" name="search">
+                    </div>
+                    <br>
+                    <div id="jstree"></div>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <% include partials/foot.ejs %>
+        <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="/dist/jstree.min.js"></script>
+        <script type="text/javascript" src="/js/tree.js"></script>\
+    </body>
+</html>

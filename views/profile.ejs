@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= user[0].degree %> <%= user[0].name %></title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="stylesheet" type="text/css" href="/dist/themes/default/style.min.css" />
+    </head>
+    <body>
+        <div id="surface">
+            <% include partials/head.ejs %>
+            <div class="container">
+                <br>
+                <div style="display: inline-block">
+                    <% if (user[0].degree) { %>
+                    <h1 style="font-weight: 800;"><%= user[0].degree %> <%= user[0].name %></h1>
+                    <% } else { %>
+                    <h1 style="font-weight: 800;"><%= user[0].name %></h1>
+                    <% } %>
+
+                </div>
+                <span>
+                    <div id="user-image">
+                        <p>Chưa có ảnh đại diện</p>
+                        <form action='/uploadImage' method='post' enctype="multipart/form-data">
+                            <input type="file" name='file'/>
+                            <button type="submit" class="btn btn-primary">Upload ảnh</button>
+                        </form>
+                        <!-- <div id="img-option">
+                            <button type="button" class="btn" id="update-img">Cập nhật ảnh</button>
+                            <button type="button" class="btn" id="del-img">Xóa ảnh</button>
+                        </div> -->
+                    </div>
+                </span>
+                <br>
+                <br>
+                <div id="information-list">
+                    <ul>
+                        <li>
+                            <img class="info-icon" src="/image/id.png"/>
+                            <span>Mã cán bộ: </span><span id="id-<%= user[0].employeeId %>"><%= user[0].employeeId %></span>
+                        </li>
+                        <li>
+                            <img class="info-icon" src="/image/deg.png"/>
+                            <span>Chức vụ: </span><span id="type-<%= user[0].employeeId %>"><%= user[0].employeeType %></span>
+                        </li>
+                        <li>
+                            <img class="info-icon" src="/image/smart-city.png"/>
+                            <span>Đơn vị: </span><span id="company-<%= user[0].employeeId %>"><%= user[0].company %></span>
+                        </li>
+                        <li>
+                            <img class="info-icon" src="/image/about-us.png"/>
+                            <span>Học hàm, học vị: </span><span id="deg-<%= user[0].employeeId %>"><%= user[0].degree %></span>
+                        </li>
+                        <li>
+                            <img class="info-icon" src="/image/close-envelope.png"/>
+                            <span>VNU email: </span><span id="mail-<%= user[0].employeeId %>"><%= user[0].email %></span>
+                        </li>
+                        <li>
+                            <img class="info-icon" src="/image/web.png"/>
+                            <span>Website: </span>
+                            <a id="web-<%= user[0].employeeId %>" href="<%= user[0].website %>"><%= user[0].website %></a>
+                        </li>
+                    </ul>
+                </div>
+                <button onclick="Edit(this)" id="edit-<%= user[0].employeeId %>" class="btn btn-primary">Cập nhật thông tin</button>
+                <div id="edit-wrapper" class="modal">
+                    <div class="modal-content animate">
+                        <div>
+                            <span onclick="document.getElementById('edit-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                            <br>
+                            <h2 style="text-align:center">Chỉnh sửa thông tin cá nhân</h2>
+                            <br>
+                        </div>
+                        <div id="edit-table" class="sub-container">
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div>
+                    <div>
+                        <span style="display: inline-block">
+                            <h2 style="margin: 0;">Chủ đề nghiên cứu</h2>
+                        </span>
+                        <button type="button" class="btn btn-primary create-object">Chỉnh sửa</button>
+                    </div>
+                    <br>
+                    <div>
+                        <ul>
+                            <li>An toàn thông tin</li>
+                            <li>Phát triển ứng dụng Web</li>
+                            <li>Mạng cảm biến không dây</li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <div>
+                        <span style="display: inline-block">
+                            <h2 style="margin: 0;">Lĩnh vực quan tâm</h2>
+                        </span>
+                        <button onclick="document.getElementById('modal-wrapper').style.display='block'" id="tree-load <%= user[0].employeeId %>"  class="btn btn-primary create-object">Thêm mới</button>
+
+                    </div>
+                    <br>
+                    <div>
+                        <ul>
+                            <% for (var i = 0; i < field.length;i++) { %>
+                            <li><%= field[i].fieldname %></li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="modal-wrapper" class="modal">
+
+            <div class="modal-content animate">
+            <div>
+                <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close"
+                title="Close PopUp">&times;</span>
+                <br>
+                <h1 style="text-align:center">Chỉnh sửa Lĩnh vực quan tâm</h1>
+                <br>
+            </div>
+            <div class="sub-container" id="information-list">
+                <div id="jstree_demo_div"></div>
+                <br>
+                <button id="save-tree" class="btn btn-primary" onClick="window.location.reload();">Lưu</button>
+
+            </div>
+            </div>
+        </div>
+        <% include partials/foot.ejs %>
+        <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="/dist/jstree.min.js"></script>
+        <script type="text/javascript" src="/js/myjs.js"></script>
+        <script type="text/javascript" src="/js/profile-manage.js"></script>
+        <script type="text/javascript">
+            $(".btn").click(function () {
+                console.log("ahhihihi")
+                const requestURL = 'field_research1';
+                console.log("making ajax request to: ", requestURL);
+                $('#jstree_demo_div').jstree({
+                    'core' : {
+                        'data' : {
+                            'url' : requestURL,
+                            'type': 'GET',
+                            'dataType' : 'json',
+                            'data' : (node) => {
+                                console.log(node.name);
+                                return {"id": node.id}
+                            },
+                            success: (data) => {
+                                research_maxID = data[0].id;
+                                for (var i = 1; i < data.length; i++)
+                                if (data[i].id > research_maxID){
+                                    research_maxID = data[i].id;
+                                }
+                            }
+                        }
+                    },
+                    "checkbox" : {
+                    "keep_selected_style" : false
+                    },
+                    "plugins" : [ "checkbox" ]
+                });
+            })
+
+            $('#jstree_demo_div').on("changed.jstree", function (e, data) {
+                var i, j, r = [];
+                for (i = 0, j = data.selected.length; i < j; i++) {
+                    const u = data.selected[i]
+                    const requestURL = 'field_research1/' + u + '&' + <%= user[0].employeeId %>;
+                    console.log("making ajax request to: ", requestURL);
+                    $.ajax({
+                        url : requestURL,
+                        type: 'GET',
+                        datatype: 'json',
+                        success: (data) => {
+                        console.log(data);
+                        }
+                    })
+                }
+            });
+        </script>
+    </body>
+</html>

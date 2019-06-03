@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Tree</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./public/dist/themes/default/style.min.css" />
+    </head>
+    <body>
+        <div id="jstree_demo_div">
+            <ul>
+                <li>Root node 1
+                <ul>
+                    <li id="child_node_1">Child node 1</li>
+                    <li>Child node 2</li>
+                </ul>
+                </li>
+                <li>Root node 2</li>
+            </ul>
+        </div>
+        <button>demo button</button>
+        <script type="text/javascript" src="./public/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="./public/dist/jstree.min.js"></script>
+        <script>
+            $(function () { 
+                $('#jstree_demo_div').jstree(); 
+
+                $('#jstree_demo_div').on("changed.jstree", function (e, data) {
+                    console.log(data.selected);
+                });
+
+                $('button').on('click', function () {
+                    $('#jstree_demo_div').jstree(true).select_node('child_node_1');
+                    $('#jstree_demo_div').jstree('select_node', 'child_node_1');
+                    $.jstree.reference('#jstree_demo_div').select_node('child_node_1');
+                });
+            });
+
+            
+        </script>
+    </body>
+</html>

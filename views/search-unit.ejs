@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Lĩnh vực nghiên cứu</title>
+  <meta charset="utf-8">
+  <%# <meta name="viewport" content="width=device-width, initial-scale=1"> %>
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="/dist/themes/default/style.min.css" />
+</head>
+
+<body>
+  <div id="surface">
+    <% include partials/head.ejs %>
+    <div class="tab-wrapper">
+      <br>
+      <div>
+        <h1>Tìm kiếm giảng viên</h1>
+      </div>
+      <br>
+      <br>
+      <ul class="tab" style="display: inline-block" style="margin: 0;">
+        <li>
+          <a href="#menu1">Đơn vị công tác</a>
+        </li>
+        <li>
+          <a href="#menu2">Lĩnh vực nghiên cứu</a>
+        </li>
+      </ul>
+      <br>
+      <br>
+      <div class="tab-content">
+        <div id="menu1" class="tab-item">
+          <div class="list">
+            <ul class="hoho">
+              <li>
+                <a href='#' class="allId">Tất cả</a>
+              </li>
+              <% for(var i=0; i < unit.length; i++) { %>
+              <li>
+                <a href='#' id="<%= unit[i].company %>" class='someId'><%= unit[i].company %></a>
+              </li>
+              <% }; %>
+            </ul>
+          </div>
+          <table id="table-unit" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Mã CB</th>
+                <th>Họ và tên</th>
+                <th>Học vị</th>
+                <th>Đơn vị công tác</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+              <% for(var i=0; i < unit.length; i++) { %>
+              <tr>
+                <td><%= unit[i].employeeId %></td>
+                <td><%= unit[i].name %></td>
+
+                <td><%= unit[i].degree %></td>
+                <td><%= unit[i].company %></td>
+                <td class="interactive">
+                  <button onclick="document.getElementById('modal-wrapper').style.display='block'"
+                    id="<%= unit[i].employeeId %>" class="123">Xem</button>
+                </td>
+              </tr>
+              <% }; %>
+            </tbody>
+          </table>
+        </div>
+
+        <div id="menu2" class="tab-item">
+          <div class="list">
+            <input type="text" placeholder="Tìm kiếm lĩnh vực" id="field-search" name="search">
+            <br>
+            <div id="jstree"></div>
+          </div>
+          <table id="table-unit" class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Mã CB</th>
+                <th>Họ và tên</th>
+                <th>Học vị</th>
+                <th>Đơn vị công tác</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+              <% for(var i=0; i < unit.length; i++) { %>
+              <tr>
+                <td><%= unit[i].employeeId %></td>
+                <td><%= unit[i].name %></td>
+
+                <td><%= unit[i].degree %></td>
+                <td><%= unit[i].company %></td>
+                <td class="interactive">
+                  <button onclick="document.getElementById('modal-wrapper').style.display='block'"
+                    id="<%= unit[i].employeeId %>" class="123">Xem</button>
+                </td>
+              </tr>
+              <% }; %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div id="modal-wrapper" class="modal">
+
+        <div class="modal-content animate">
+          <div>
+            <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close"
+              title="Close PopUp">&times;</span>
+            <br>
+            <h1 style="text-align:center">Thông tin</h1>
+            <br>
+          </div>
+          <div class="sub-container" id="information-list">
+            <ul id="mylist">
+              <img id="profile-img" class="rounded" alt="Cinque Terre" src="/image/thanos.jpeg">
+              <li>
+                <span id="unitName"></span>
+              </li>
+              <li>
+                <img class="info-icon" src="/image/id.png" />
+                <span id="unitEmployeeID"></span>
+              </li>
+              <li>
+                <img class="info-icon" src="/image/about-us.png" />
+                <span id="unitDegree"></span>
+              </li>
+              <li>
+                <img class="info-icon" src="/image/smart-city.png" />
+                <span id="unitCompany"></span>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <%include partials/foot.ejs%>
+  <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+  <script type="text/javascript" src="/js/myjs.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/dist/jstree.min.js"></script>
+  <script type="text/javascript" src="/js/tree-guest.js"></script>
+</body>
+
+</html>

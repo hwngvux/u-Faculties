@@ -1,0 +1,41 @@
+a, a:hover {
+    text-decoration: none;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+ul, li {
+    list-style: none;
+}
+#content {
+    padding: 0 30px;
+}
+    #field-list {
+        padding: 0 20px;
+        border: 1px solid grey;
+    }
+#create {
+    background-color: cyan;
+    position: fixed;
+    border: 1px solid gray;
+    padding: 1px;
+    cursor: pointer;
+    margin-left: 20px;
+}
+#edit {
+    background-color: cyan;
+    position: fixed;
+    border: 1px solid gray;
+    padding: 1px;
+    cursor: pointer;
+    margin-left: 70px;
+}
+#del {
+    background-color: cyan;
+    position: fixed;
+    border: 1px solid gray;
+    padding: 1px;
+    cursor: pointer;
+    margin-left: 107px;
+}

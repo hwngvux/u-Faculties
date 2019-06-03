@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Đơn vị</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div id="surface">
+            <% include partials/head.ejs %>
+            <div class="container">
+                <br>
+                <div>
+                    <span style="display: inline-block;">
+                        <h1>Đơn vị</h1>
+                    </span>
+                    <% if (role === "admin") { %>
+                    <button onclick="document.getElementById('modal-wrapper').style.display = 'block'" type="button" class="btn btn-primary create-object">Thêm mới</button>
+                    <div id="modal-wrapper" class="modal">
+                        <div class="modal-content animate">
+                          <div>
+                            <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                            <br>
+                            <h1 style="text-align:center">Thêm Đơn vị</h1>
+                            <br>
+                          </div>
+                          <div class="sub-container">
+                            <form action='/controllers/units-controller' method='POST'>
+                                <label class="create-label" for="name">Tên đơn vị: </label>
+                                <input id="name" class="input-box" name="unitName" required/>
+                                <br>
+                                <label class="create-label" for="type">Loại đơn vị: </label>
+                                <select class="input-box" id="type" name="unitType">
+                                    <option value="Bộ môn">Bộ môn</option>
+                                    <option value="Phòng thí nghiệm">Phòng thí nghiệm</option>
+                                </select>
+                                <br>
+                                <label class="create-label" for="addr">Địa chỉ: </label>
+                                <input id="addr" class="input-box" name="address"/>
+                                <br>
+                                <label class="create-label" for="tel">Điện thoại: </label>
+                                <input id="tel" class="input-box" name="phone"/>
+                                <br>
+                                <label class="create-label" for="web">Website: </label>
+                                <input id="web" class="input-box" name="website"/>
+                                <br>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Thêm</button>
+                            </form>
+                          </div> 
+                        </div>
+                    </div>
+                    <% } else {} %>
+                <br>
+                <div style="float: right;">
+                    <span>
+                        <label for="myInput" class="label" style="display: inline">Loại Đơn Vị: </label>
+                        <select value="unit-list" id="myInput">
+                            <option value=" ">Tất cả</option>
+                            <option value="Bộ môn">Bộ môn</option>
+                            <option value="Phòng thí nghiệm">Phòng thí nghiệm</option>
+                        </select>
+                    </span>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-md-12">
+                    <table id="table" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tên đơn vị</th>
+                                <th>Loại đơn vị</th>
+                                <th>Địa chỉ</th>
+                                <th>Điện thoại</th>
+                                <th>Website</th>
+                                <% if (role === "admin") { %> 
+                                    <th>Thao tác</th>
+                                <% } else {} %>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            <% for(var i=0; i < units.length; i++) { %>
+                                <tr>
+                                    <td id="name-<%= units[i].id %>"><%= units[i].name %></td>
+                                    <td id="type-<%= units[i].id %>"><%= units[i].unit_type %></td>
+                                    <td id="addr-<%= units[i].id %>"><%= units[i].address %></td>
+                                    <td id="phone-<%= units[i].id %>"><%= units[i].phone %></td>
+                                    <td><a href="<%= units[i].website %>" id="link-<%= units[i].id %>"><%= units[i].website %></a></td>
+                                    <% if (role === "admin") { %>
+                                        <td class="interactive">
+                                            <div class="interactive-option">
+                                                <button onclick="Edit(this)" id="edit-<%= units[i].id %>" class="btn btn-primary table-edit">Sửa</button>
+                                                <div id="edit-wrapper" class="modal">
+                                                    <div class="modal-content animate">
+                                                        <div>
+                                                        <span onclick="document.getElementById('edit-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                                                        <br>
+                                                        <h1 style="text-align:center">Sửa thông tin Đơn vị</h1>
+                                                        <br>
+                                                        </div>
+                                                        <div id="edit-table" class="sub-container">
+                                                        </div> 
+                                                    </div>
+                                                </div>
+                                                <button onclick="confirmDelete(this)" id="delete-<%= units[i].id %>" class="btn btn-secondary table-edit">Xóa</button>
+                                                <div id="delete-wrapper" class="modal"></div>
+                                            </div>
+                                        </td>
+                                    <% } else {} %>
+                                </tr>
+                            <% }; %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <% include partials/foot.ejs %>
+        <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="/js/myjs.js"></script>
+        <script type="text/javascript" src="/js/unit-manage.js"></script>
+        <script type="text/javascript">
+            // add row
+            // function addHtmlTableRow() {
+            //     var table = document.getElementById("#table"),
+            //         newRow = table.insertRow(table.length),
+            //         cell1 = newRow.insertCell(0),
+            //         cell2 = newRow.insertCell(1),
+            //         cell3 = newRow.insertCell(2),
+
+            // }
+        </script>
+    </body>
+</html>

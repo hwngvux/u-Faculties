@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cán bộ</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div id="surface">
+            <% include partials/head.ejs %>
+            <div class="container">
+                <br>
+                <div>
+                    <span style="display: inline-block;">
+                        <h1>Cán bộ</h1>
+                    </span>
+                    <div class="create-object">
+                        <% if (role === "admin") { %> 
+                        <button onclick="document.getElementById('modal-wrapper').style.display = 'block'" type="button" class="btn btn-primary">Thêm mới</button>
+                        <div id="modal-wrapper" class="modal">
+                            <div class="modal-content animate">      
+                                <div>
+                                    <span onclick="document.getElementById('modal-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                                    <br>
+                                    <h1 style="text-align:center">Thêm Giảng viên</h1>
+                                    <br>
+                                </div>
+                                <div class="sub-container">
+                                    <form action='/controllers/employee-controller' method='POST'>
+                                        <label class="create-label" for="name">Họ và tên: </label>
+                                        <input id="name" class="input-box" name="name" required/>
+                                        <br>
+                                        <label class="create-label" for="acc">Tài khoản: </label>
+                                        <input id="acc" class="input-box" name="username" required/>
+                                        <br>
+                                        <label class="create-label" for="mail">VNU Email: </label>
+                                        <input id="mail" class="input-box" name="email"/>
+                                        <br>
+                                        <label class="create-label" for="pwd">Mật khẩu: </label>
+                                        <input id="pwd" class="input-box" name="password" type="password" required/>
+                                        <br>
+                                        <label class="create-label" for="type">Loại CB: </label>
+                                        <input id="type" class="input-box" name="employeeType"/>
+                                        <br>
+                                        <label class="create-label" for="deg">Học vị: </label>
+                                        <select class="input-box" id="deg" name="degree">
+                                            <option value="TS">TS</option>
+                                            <option value="ThS">ThS</option>
+                                            <option value="GS">GS</option>
+                                            <option value="PGS. TS">PGS. TS</option>
+                                        </select>
+                                        <br>
+                                        <label class="create-label" for="unit">Nơi công tác: </label>
+                                        <input id="unit" class="input-box" name="company"/>
+                                        <br>
+                                        <br>
+                                        <button id="addEmpl" class="btn btn-primary">Thêm</button>
+                                    </form>
+                                </div> 
+                            </div>
+                        </div>
+                        <button onclick="document.getElementById('excel-wrapper').style.display = 'block'" type="button" class="btn btn-primary">Thêm từ Excel</button>
+                        <div id="excel-wrapper" class="modal">
+                            <div class="modal-content animate">
+                                <div>
+                                    <span onclick="document.getElementById('excel-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                                    <br>
+                                    <h1 style="text-align:center">Thêm Giảng viên từ Excel</h1>
+                                    <br>
+                                </div>
+                                <div class="sub-container" class="custom-file">
+                                    <form action='/uploadExcel' method='post' enctype="multipart/form-data">    
+                                        Chọn file: <input id="input-excel" type="file" name="file" accept=".xlsx, .xls"><br><br>
+                                        <button type="submit" class="btn btn-primary">Upload</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> 
+                        <% } else {} %>
+                    </div>
+                <br>
+                <div style="float: right;">
+                    <div class="employee-option" id="employee-select">
+                        <label for="employee-list" class="label">Loại Cán Bộ </label>
+                        <select value="employee-list" id="type-select">
+                            <option value=" ">Tất cả</option>
+                            <option>Giảng viên</option>
+                        </select>
+                    </div>
+                    <div class="employee-option" id="degree-select">
+                        <label for="degree-list" class="label">Học hàm, học vị </label>
+                        <select value="degree-list" id="deg-select">
+                            <option value=" ">Tất cả</option>
+                            <option>GS</option>
+                            <option>ThS</option>
+                            <option>TS</option>
+                            <option>PGS. TS</option>
+                        </select>
+                    </div>
+                    <div class="employee-option" id="unit-select">
+                        <label for="unit-list" class="label">Đơn Vị </label>
+                        <select value="unit-list" id="myInput">
+                            <option value=" ">Tất cả</option>
+                            <option value="Bộ môn">Bộ môn</option>
+                            <option value="Phòng thí nghiệm">Phòng thí nghiệm</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <div class="col-md-12">
+                    <table id="table" class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Mã CB</th>
+                                <th>Họ và tên</th>
+                                <th>Tài khoản</th>
+                                <th>VNU email</th>
+                                <th>Loại CB</th>
+                                <th>Học vị</th>
+                                <th>Đơn vị công tác</th>
+                                <% if (role === "admin") { %> 
+                                    <th>Thao tác</th>
+                                <% } else {} %>
+                            </tr>
+                        </thead>
+                        <tbody id="myTable">
+                            <% for(var i = 0; i < employee.length; i++) { var emplID = employee[i].employeeId;  %>
+                                <tr>
+                                    <td id="id-<%= emplID %>"><%= employee[i].employeeId %></td>
+                                    <td id="name-<%= emplID %>"><%= employee[i].name %></td>
+                                    <td id="username-<%= emplID %>"><%= employee[i].username %></td>
+                                    <td id="mail-<%= emplID %>"><%= employee[i].email %></td>
+                                    <td id="type-<%= emplID %>"><%= employee[i].employeeType%></td>
+                                    <td id="deg-<%= emplID %>"><%= employee[i].degree %></td>
+                                    <td id="company-<%= emplID %>"><%= employee[i].company %></td>
+                                    <% if (role === "admin") { %>
+                                    <td class="interactive">
+                                        <div class="interactive-option">
+                                            <button id="edit-<%= emplID %>" onclick="Edit(this)" class="btn btn-primary table-edit">Sửa</button>
+                                            <div id="edit-wrapper" class="modal">
+                                                <div class="modal-content animate">      
+                                                    <div>
+                                                        <span onclick="document.getElementById('edit-wrapper').style.display='none'" class="close" title="Close PopUp">&times;</span>
+                                                        <br>
+                                                        <h2 style="text-align:center">Chỉnh sửa thông tin Giảng viên</h2>
+                                                        <br>
+                                                    </div>
+                                                    <div id="edit-table" class="sub-container">
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                            <button id="delete-<%= employee[i].username %>" onclick="confirmDelete(this)" class="btn btn-secondary table-edit">Xóa</button>
+                                            <div id="delete-wrapper" class="modal"></div>
+                                        </div>
+                                    </td>
+                                    <% } else {} %>
+                                </tr>
+                            <% }; %>
+                        </tbody>
+                    </table>
+                </div>                
+            </div>
+        </div>
+        <% include partials/foot.ejs %>
+        <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+        <script type="text/javascript" src="/js/myjs.js"></script>
+        <script type="text/javascript" src="/js/employee-manage.js"></script>
+    </body>
+</html>

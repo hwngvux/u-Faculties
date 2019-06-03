@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Trang thông tin giảng viên</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+    <div id="surface">
+        <% include partials/head.ejs %>
+        <div class="slider-container">
+            <div class="container clear-fix">
+                <div id="main-content">
+                    <br>
+                    <div id="banner">
+                        <h1 id="slogan">TRANG THÔNG TIN GIẢNG VIÊN</h1>
+                    </div>
+                    <br>
+                    <% if (role === "admin") { %>
+                    <br>
+                    <div>
+                        <span class="select">
+                            <a href="unit"><img src="/image/college.png"></a>
+                        </span>
+                        <span class="select rounded-lg">
+                            <a href="field_research"><img src="/image/open-book.png"></a>
+                        </span>
+                        <span class="select rounded-lg">
+                            <a href="employee"><img src="/image/lecture.png"></a>
+                        </span>
+                        <span class="select rounded-lg">
+                            <a href="/search-unit"><img src="/image/search.png"></a>
+                        </span>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>  
+                    <% } else { %>
+                    <form action="/search-unit" method="get">
+                        <button type="submit" class="btn btn-warning" style="margin: auto; display: block;">Tìm kiếm</button>
+                    </form>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include partials/foot.ejs %>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Trang thông tin giảng viên</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+    </head>
+    <body>
+        <div id="surface">
+            <div id="header">
+                <div class="container clear-fix">
+                    <a href="localhost:8000" id="logo-page">
+                        <span id="header-logo"></span>
+                    </a>
+                    <div id="header-user">
+                        <form action="/controllers/register-controller" method="post">
+                            <table id=login>
+                                <tbody>
+                                    <tr>
+                                        <th>Tên đăng nhập</th>
+                                        <th>Mật khẩu</th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <input class="input-box" type="text" name="username" required>
+                                        </th>
+                                        <th>
+                                            <input class="input-box" type="password" name="password" required>
+                                        </th>
+                                        <th>
+                                            <button type="submit" class="btn btn-success" id="login-btn">Đăng ký</button>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th>
+                                            <a id="forgot-password" href="">Quên mật khẩu?</a>
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="container clear-fix">
+                <ul id="main-content">
+                    <br>
+                    <div>
+                        <h1 id="slogan">Trang thông tin giảng viên</h1>
+                    </div>
+                    <br>
+                    <div class="form-group has-search">
+                        <input type="text" class="form-control" placeholder="Bạn muốn tìm kiếm gì?...">
+                    </div>
+                    <br>
+                    <br>
+                    <nav class="navbar navbar-expand-sm bg-light">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="unit">Đơn vị</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="field_research">Lĩnh vực nghiên cứu</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="employee">Giảng viên</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
