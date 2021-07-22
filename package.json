@@ -25,7 +25,7 @@
     "read-excel-file": "^4.0.1",
     "routes": "^2.1.0",
     "url": "^0.11.0",
-    "xlsx": "^0.14.3"
+    "xlsx": "^0.17.0"
   },
   "devDependencies": {
     "nodemon": "^1.18.11"
